@@ -112,3 +112,26 @@
 [Mon Jun 05 18:46:08.616578 2023] [php7:notice] [pid 13785] [client 86.253.16.120:56136] PHP Notice:  Undefined index: mois in /var/www/etu115/php/request.php on line 30, referer: http://etu115.projets.isen-ouest.fr/carte.html?month=03&severity=Pas+Grave&age=20-40
 [Mon Jun 05 18:46:08.616645 2023] [php7:notice] [pid 13785] [client 86.253.16.120:56136] PHP Notice:  Undefined index: descr_grav in /var/www/etu115/php/request.php on line 31, referer: http://etu115.projets.isen-ouest.fr/carte.html?month=03&severity=Pas+Grave&age=20-40
 [Mon Jun 05 18:46:08.616654 2023] [php7:notice] [pid 13785] [client 86.253.16.120:56136] PHP Notice:  Undefined index: age in /var/www/etu115/php/request.php on line 32, referer: http://etu115.projets.isen-ouest.fr/carte.html?month=03&severity=Pas+Grave&age=20-40
+[Tue Jun 06 08:18:36.852779 2023] [cgi:error] [pid 28999] [client 185.185.119.35:50414] AH02811: script not found or unable to stat: /var/www/etu115/cgi/scriptkeam.py, referer: http://etu115.projets.isen-ouest.fr/IAcluster.html
+[Tue Jun 06 08:19:41.562682 2023] [cgi:error] [pid 29278] [client 185.185.119.35:50461] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/scriptkeam.py, referer: http://etu115.projets.isen-ouest.fr/IAcluster.html
+[Tue Jun 06 08:19:47.144488 2023] [cgi:error] [pid 29287] [client 185.185.119.35:50468] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/scriptkeam.py, referer: http://etu115.projets.isen-ouest.fr/IAcluster.html
+[Tue Jun 06 08:28:56.266766 2023] [cgi:error] [pid 30545] [client 185.185.119.35:50766] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/scriptkeam.py, referer: http://etu115.projets.isen-ouest.fr/IAcluster.html
+[Tue Jun 06 08:29:31.794847 2023] [cgi:error] [pid 30676] [client 185.185.119.35:50767] AH02811: script not found or unable to stat: /var/www/etu115/cgi/scriptkeam.py, referer: http://etu115.projets.isen-ouest.fr/IAcluster.html
+[Tue Jun 06 08:39:55.009920 2023] [cgi:error] [pid 32592] [client 185.185.119.35:51385] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/scriptkeam.py, referer: http://etu115.projets.isen-ouest.fr/IAcluster.html
+[Tue Jun 06 08:41:16.663420 2023] [cgi:error] [pid 516] [client 185.185.119.35:51433] AH01215: (13)Permission denied: exec of '/var/www/etu115/cgi/scriptkmean.py' failed: /var/www/etu115/cgi/scriptkmean.py, referer: http://etu115.projets.isen-ouest.fr/IAcluster.html
+[Tue Jun 06 08:41:16.664888 2023] [cgi:error] [pid 516] [client 185.185.119.35:51433] End of script output before headers: scriptkmean.py, referer: http://etu115.projets.isen-ouest.fr/IAcluster.html
+[Tue Jun 06 08:46:30.081911 2023] [cgi:error] [pid 1446] [client 185.185.119.35:51635] AH01215: (13)Permission denied: exec of '/var/www/etu115/cgi/scriptkmean.py' failed: /var/www/etu115/cgi/scriptkmean.py, referer: http://etu115.projets.isen-ouest.fr/IAcluster.html
+[Tue Jun 06 08:46:30.083089 2023] [cgi:error] [pid 1446] [client 185.185.119.35:51635] End of script output before headers: scriptkmean.py, referer: http://etu115.projets.isen-ouest.fr/IAcluster.html
+[Tue Jun 06 08:47:53.831264 2023] [cgi:error] [pid 1717] [client 185.185.119.35:51682] AH02811: script not found or unable to stat: /var/www/etu115/cgi/scriptkmean.py longitude=4.2 latitude=58
+[Tue Jun 06 08:48:36.030663 2023] [cgi:error] [pid 1800] [client 185.185.119.35:51683] AH01215: (13)Permission denied: exec of '/var/www/etu115/cgi/scriptkmean.py' failed: /var/www/etu115/cgi/scriptkmean.py
+[Tue Jun 06 08:48:36.032922 2023] [cgi:error] [pid 1800] [client 185.185.119.35:51683] End of script output before headers: scriptkmean.py
+[Tue Jun 06 08:49:27.904900 2023] [cgi:error] [pid 1958] [client 185.185.119.35:51752] AH01215: (13)Permission denied: exec of '/var/www/etu115/cgi/scriptkmean.py' failed: /var/www/etu115/cgi/scriptkmean.py
+[Tue Jun 06 08:49:27.906276 2023] [cgi:error] [pid 1958] [client 185.185.119.35:51752] End of script output before headers: scriptkmean.py
+[Tue Jun 06 08:50:49.051015 2023] [cgi:error] [pid 2209] [client 185.185.119.35:51797] AH01215: (8)Exec format error: exec of '/var/www/etu115/cgi/test.py' failed: /var/www/etu115/cgi/test.py
+[Tue Jun 06 08:50:49.052142 2023] [cgi:error] [pid 2209] [client 185.185.119.35:51797] End of script output before headers: test.py
+[Tue Jun 06 08:52:07.968442 2023] [cgi:error] [pid 2514] [client 185.185.119.35:51843] AH01215: (8)Exec format error: exec of '/var/www/etu115/cgi/test.py' failed: /var/www/etu115/cgi/test.py
+[Tue Jun 06 08:52:07.970592 2023] [cgi:error] [pid 2514] [client 185.185.119.35:51843] End of script output before headers: test.py
+[Tue Jun 06 08:52:41.202341 2023] [cgi:error] [pid 2640] [client 185.185.119.35:51844] AH01215: (8)Exec format error: exec of '/var/www/etu115/cgi/test.py' failed: /var/www/etu115/cgi/test.py
+[Tue Jun 06 08:52:41.203736 2023] [cgi:error] [pid 2640] [client 185.185.119.35:51844] End of script output before headers: test.py
+[Tue Jun 06 09:16:30.384866 2023] [cgi:error] [pid 8647] [client 185.185.119.35:52716] AH01215: (26)Text file busy: exec of '/var/www/etu115/cgi/test.py' failed: /var/www/etu115/cgi/test.py
+[Tue Jun 06 09:16:30.386137 2023] [cgi:error] [pid 8647] [client 185.185.119.35:52716] End of script output before headers: test.py

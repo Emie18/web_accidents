@@ -1,0 +1,36 @@
+form {
+    padding: 1rem;
+    background: #FCB5AA;
+    border-radius: 20px;
+    margin: 0.5rem;
+    box-shadow: #5E2B45 2px 2px 3px;
+}
+
+#map {
+    width: 350px;
+    height: 400px;
+    /* Ajustez la hauteur selon vos besoins */
+    box-shadow: #5E2B45 10px 10px 10px;
+    border-radius: 20px;
+}
+
+.marker {
+    background-color: #FA6782;
+    /* Couleur du marqueur */
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+}
+
+
+#info {
+    padding: 1rem;
+    border-radius: 20px;
+    box-shadow: #5E2B45 10px 10px 10px;
+    height: fit-content;
+    width: 60%;
+    background-color:  #FCB5AA;
+    color: #5E2B45;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}

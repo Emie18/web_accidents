@@ -15,93 +15,105 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/carte.css">
     <script src="js/ajax.js" defer></script>
     <script src="js/filtrage.js" defer></script>
     <script src="js/utils.js" defer></script>
-    
-    <style>
-        #map {
-          width: 350px;
-          height: 400px; /* Ajustez la hauteur selon vos besoins */
-          box-shadow: #5E2B45 10px 10px 5px;
-          border-radius: 20px;
-        }
-        .marker {
-  background-color: #FA6782; /* Couleur du marqueur */
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-}
-#info{
-    padding: 1rem;
-    border-radius: 20px;
-    box-shadow: #5E2B45 10px 10px 5px;
-    height: fit-content;
-    width: 60%;
-    background-color: #fffaf1c5;
-    color: #5E2B45;
-    margin-top: 1rem;
-}
-.contenant{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    flex-wrap: nowrap;
-}
 
-        </style>
   </head>
   <body>
-    <!-- Header -->
-    <header>Visualisation des donnée en Carte WEB</header>
-
-    <div class="filtre">
-            <form id="filtreForm" method="post" action="php/request.php/filtre">
-              <label for="mois">Mois :</label>
-              <select id="mois" name="mois">
-                <option value="">Tous</option>
-                <option value="1">Janvier</option>
-                <option value="2">Février</option>
-                <option value ="3">Mars</option>
-                <option value ="4">Avril</option>
-                <option value ="5">Mai</option>
-                <option value ="6">Juin</option>
-                <option value ="7">Juillet</option>
-                <option value ="8">Août</option>
-                <option value ="9">Septembre</option>
-                <option value ="10">Octobre</option>
-                <option value ="11">Novembre</option>
-                <option value ="12">Décembre</option>
-
-              </select>
-          
-              <label for="descr_grav">Gravité :</label>
-              <select id="descr_grav" name="descr_grav">
-                <option value="">Tous</option>
-                <option value="Pas grave">Pas grave</option>
-                <option value="Grave">Grave</option>
-              </select>
-          
-              <label for="age">Âge :</label>
-              <select id="age" name="age">
-                <option value="">Tous</option>
-                <option value="0-20">0-20</option>
-                <option value="20-40">20-40</option>
-                <option value="40-60">40-60</option>
-                <option value="60-80">60-80</option>
-                <option value="80-90">80-90</option>
-              </select>
-          
-              <button type="submit">Filtrer</button>
-            </form>
-         
-    </div>
     <div class="contenant">
-        <h1>Carte des Accidents France en 2009</h1>
-        <div id="map"></div>
-        <div id="info"></div>
-    </div>
+      <!-- Header -->
+      <nav class="dropdownmenu" id="header">
+        <ul>
+          <li><img id="logo" src="img/dis.png" alt="logo"></li>
+          <li><a href="index.html">Acceuil</a></li>
+          <li><a href="ajout.html">Ajouter</a></li>
+          <li><a href="#">Visualisation</a>
+              <ul id="submenu">
+                  <li><a href="carte.html">Cartes</a></li>
+                  <li><a href="#">Tableaux</a></li>
+              </ul>
+          </li>
+          <li id="ia"><a href="#">IA</a>
+              <ul id="submenu">
+                  <li><a href="IAcluster.html">Trouver le cluster</a></li>
+                  <li><a href="#">Trouver la gravité</a></li>
+              </ul>
+          </li>
+        </ul>
+      </nav>
+      <!-- Home -->
+      <div class="filtre">
+        <form id="filtreForm" method="post" action="php/request.php/filtre">
+          <label for="mois">Mois :</label>
+          <select id="mois" name="mois">
+            <option value="">Tous</option>
+            <option value="1">Janvier</option>
+            <option value="2">Février</option>
+            <option value ="3">Mars</option>
+            <option value ="4">Avril</option>
+            <option value ="5">Mai</option>
+            <option value ="6">Juin</option>
+            <option value ="7">Juillet</option>
+            <option value ="8">Août</option>
+            <option value ="9">Septembre</option>
+            <option value ="10">Octobre</option>
+            <option value ="11">Novembre</option>
+            <option value ="12">Décembre</option>
+
+          </select>
+      
+          <label for="descr_grav">Gravité :</label>
+          <select id="descr_grav" name="descr_grav">
+            <option value="">Tous</option>
+            <option value="Pas grave">Pas grave</option>
+            <option value="Grave">Grave</option>
+          </select>
+      
+          <label for="age">Âge :</label>
+          <select id="age" name="age">
+            <option value="">Tous</option>
+            <option value="0-20">0-20</option>
+            <option value="20-40">20-40</option>
+            <option value="40-60">40-60</option>
+            <option value="60-80">60-80</option>
+            <option value="80-90">80-90</option>
+          </select>
+
+          <br>
+          <label for="choix">Choix de la table :</label>
+          <select id="choix" name="choix">
+            <option value="0" selected>Grande</option>
+            <option value="1">Petit</option>
+          </select>
+          
+          <label for="limit">Choix de la taille :</label>
+          <select id="limit" name="limit">
+            <option value="10" selected>10</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+            <option value="500">500</option>
+            <option value="1000">1000</option>
+          </select>
+      
+          <button type="submit">Filtrer</button>
+        </form>
+     
+</div>
+<div class="contenant2">
+    <h1>Carte des Accidents France en 2009</h1>
+    <div id="map"></div>
+    <div id="info">Passer la souris sur un des points pour voir les détails</div>
+</div>
+    
+      <!-- Footer -->
+      <footer>
+        <p>@Groupe 1 - Trinôme 6</p>
+      </footer>
+      </div>
+ 
     <!-- Footer -->
 
   </body>

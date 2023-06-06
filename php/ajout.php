@@ -1,28 +1,56 @@
 <?php
-// Connexion à la base de données
-$db = new PDO('mysql:host=localhost;dbname=etu115', 'etu115', 'fcsvberc');
 
-// Récupération des villes depuis la table grande_table_accidents
-$query = "SELECT id_code_insee, ville FROM grande_table_accidents GROUP BY id_code_insee, ville limit 1000";
-$result = $db->query($query);
+    require_once('database.php');
+    // Database connexion.
+  $db = dbConnect();
+  if (!$db)
+  {
+    header ('HTTP/1.1 503 Service Unavailable');
+    exit;
+  }
 
-// Préparation de la requête d'insertion dans la table Ville
-$insertQuery = "INSERT INTO Ville (id_code_insee, ville) VALUES (:id_code_insee, :ville)";
-$insertStatement = $db->prepare($insertQuery);
+  // Check the request.
+  $requestMethod = $_SERVER['REQUEST_METHOD'];
+  //les get ?url
+  $request = substr($_SERVER['PATH_INFO'], 1);
+  $request = explode('/', $request);
+  $requestRessource = array_shift($request);
 
-// Parcours des résultats et insertion des villes dans la table Ville
-while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-    // Conversion de id_code_insee en entier (INT)
-    $id_code_insee = intval($row['id_code_insee']);
+
+
+    if ($requestMethod == 'POST' && $requestRessource == 'form') {
+        $date_heure = $_POST['date_heure'];
+        $latitude = $_POST['latitude'];
+        $longitude = $_POST['longitude'];
+        $age = $_POST['age'];
+        $descr_athmo = $_POST['descr_athmo'];
+        $id_code_insee = $_POST['id_code_insee'];
+        $descr_lum = $_POST['descr_lum'];
+        $descr_dispo_secu = $_POST['descr_dispo_secu'];
+        $descr_etat_surf = $_POST['descr_etat_surf'];
+        $descr_cat_veh = $_POST['descr_cat_veh'];
+        $descr_agglo = $_POST['descr_agglo'];
+        $descr_type_col = $_POST['descr_type_col'];
     
-    // Insertion des valeurs dans la table Ville
-    $insertStatement->bindParam(':id_code_insee', $id_code_insee, PDO::PARAM_INT);
-    $insertStatement->bindParam(':ville', $row['ville'], PDO::PARAM_STR);
-    $insertStatement->execute();
-}
+        // Effectuer la requête en fonction des critères de filtrage
+        $request = "INSERT INTO accidents(date_heure, latitude, longitude, age, descr_athmo, id_code_insee, descr_lum, descr_dispo_secu, descr_etat_surf, descr_cat_veh, descr_agglo, descr_type_col) 
+        VALUES('$date_heure', '$latitude', '$longitude', '$age', '$descr_athmo', '$id_code_insee', '$descr_lum', '$descr_dispo_secu', '$descr_etat_surf', '$descr_cat_veh', '$descr_agglo', '$descr_type_col')";
+        $statement = $db->prepare($request);
+        $statement->execute();
+        if ($statement->rowCount() > 0) {
+            // La commande a été exécutée avec succès
+            $data= "l'accident à été ajouté";
+        } else {
+            // La commande n'a pas été exécutée ou n'affecte aucune ligne
+            $data = "La commande n'a pas été exécutée";
+        }
 
-echo "Les villes ont été ajoutées avec succès dans la table Ville.";
-
-// Fermeture de la connexion à la base de données
-$db = null;
-?>
+          // Send data to the client.
+  header('Content-Type: application/json; charset=utf-8');
+  header('Cache-control: no-store, no-cache, must-revalidate');
+  header('Pragma: no-cache');
+  header('HTTP/1.1 200 OK');
+  echo json_encode($data);
+  exit;
+    }
+?> 

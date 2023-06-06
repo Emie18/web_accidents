@@ -1,0 +1,132 @@
+<!--
+\\Author: Prenom NOM
+\\Login : etuXXX
+\\Groupe: ISEN X GROUPE Y
+\\Annee:
+-->
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accidents 2009</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+    <script type="text/python" src="cgi/scriptkmean.py"></script>
+    <script src="js/ajax.js" defer></script>
+    <script src="js/cluster.js" defer></script>
+    <style>
+            .tableau {
+        width: 100%;
+        border-collapse: collapse;
+        }
+
+        .tableau tr:nth-child(even) {
+        background-color: #FCB5AA; 
+        }
+        .tableau tr:nth-child(odd) {
+        background-color:  #FFDFD1; 
+        }
+
+        .tableau tr:hover {
+        background-color: #e0e0e0; /* Couleur de fond au survol d'une ligne */
+        }
+
+        .tableau th,
+        .tableau td {
+        padding: 8px;
+        text-align: left;
+        }
+
+        .tableau th {
+        background-color:#5E2B45; /* Couleur de fond pour les cellules d'en-tête */
+        color: #ffffff; /* Couleur du texte pour les cellules d'en-tête */
+        }
+
+        #map {
+          width: 350px;
+          height: 400px; /* Ajustez la hauteur selon vos besoins */
+          box-shadow: #5E2B45 10px 10px 20px;
+          border-radius: 20px;
+          margin-bottom: 1rem;
+        }
+        .marker {
+  background-color: #FA6782; /* Couleur du marqueur */
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
+.contenant2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+}
+.cluster{
+  font-size: 20px;
+  color: #FFFAF1;
+  text-shadow: #5E2B45 2px 2px 1px;
+}
+#resulat{
+  width: 300px;
+  height: 50px;
+}
+    </style>
+  </head>
+  <body>
+    <div class="contenant">
+      <!-- Header -->
+      <nav class="dropdownmenu" id="header">
+        <ul>
+            <li><img id="logo" src="img/dis.png" alt="logo"></li>
+            <li><a href="index.html">Acceuil</a></li>
+            <li><a href="ajout.html">Ajouter</a></li>
+            <li><a href="#">Visualisation</a>
+                <ul id="submenu">
+                    <li><a href="carte.html">Cartes</a></li>
+                    <li><a href="#">Tableaux</a></li>
+                </ul>
+            </li>
+            <li id="ia"><a href="#">IA</a>
+                <ul id="submenu">
+                    <li><a href="IAcluster.html">Trouver le cluster</a></li>
+                    <li><a href="#">Trouver la gravité</a></li>
+                </ul>
+            </li>
+        </ul>
+      </nav>
+      <!-- Home -->
+      <div class="contenant2">
+        <h2>IA touver le cluster d'un accidents</h2>
+      <div id="resultat">Apuyer sur trouver pour trouver le cluster qui correspond</div>
+      <div id="map"></div>
+      <div id="affiche">
+          <table class="tableau">
+              <th>ID<Dth>
+              <th>ville</th>
+              <th>Date</th>
+              <th>météo</th>
+              <th>aglomération</th>
+              <th>luminosité</th>
+              <th>dispositif de sécurité</th>
+              <th>etat de la toute</th>
+              <th>type de collision</th>
+              <th>catégorie du véhicule</th>
+              <th>IA cluster</th>
+          </table>
+      </div>
+    </div>
+    
+      <!-- Footer -->
+      <footer>
+        <p>@Groupe 1 - Trinôme 6</p>
+      </footer>
+      </div>
+  </body>
+</html>

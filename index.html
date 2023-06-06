@@ -1,25 +1,58 @@
-<!--
-\\Author: Prenom NOM
-\\Login : etuXXX
-\\Groupe: ISEN X GROUPE Y
-\\Annee:
--->
-
 <!doctype html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accidents 2009</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="js/ajax.js" defer></script>
-    <script src="js/utils.js" defer></script>
-  </head>
-  <body>
-    <!-- Header -->
-    <header>Projet WEB</header>
 
+<head>
+  <!-- Meta tags -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- CSS Style -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Font -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Title -->
+  <title>Accidents 2009</title>
+</head>
 
-  </body>
+<body>
+  <div class="contenant">
+  <!-- Header -->
+  <nav class="dropdownmenu" id="header">
+    <ul>
+        <li><img id="logo" src="img/dis.png" alt="logo"></li>
+        <li><a href="index.html">Acceuil</a></li>
+        <li><a href="ajout.html">Ajouter</a></li>
+        <li><a href="#">Visualisation</a>
+            <ul id="submenu">
+                <li><a href="carte.html">Cartes</a></li>
+                <li><a href="#">Tableaux</a></li>
+            </ul>
+        </li>
+        <li id="ia"><a href="#">IA</a>
+            <ul id="submenu">
+                <li><a href="IAcluster.html">Trouver le cluster</a></li>
+                <li><a href="#">Trouver la gravité</a></li>
+            </ul>
+        </li>
+    </ul>
+  </nav>
+  <!-- Home -->
+    <div id="text_container">
+      <h1 id="titre">Projet Web - Accidents 2009</h1>
+      <h3 id="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+        industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
+        it to make a type specimen book.</h3>
+    </div>
+    <div id="dessin_container">
+      <img id="dessin" src="https://www.educol.net/image-accident-de-la-route-dm30307.jpg" alt="dessin_accident">
+      <figcaption>Educol.net - Image d'accident de la route</figcaption>
+    </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>@Groupe 1 - Trinôme 6</p>
+  </footer>
+  </div>
+</body>
+
 </html>

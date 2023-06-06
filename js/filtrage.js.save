@@ -1,0 +1,34 @@
+// Récupérer le formulaire et ajouter un gestionnaire d'événement pour la soumission
+var filterForm = document.getElementById('filtreForm');
+filterForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Empêcher la soumission du formulaire par défaut
+
+    // Récupérer les valeurs des filtres
+    var mois = document.querySelector('#mois').value;
+    var descr_grav = document.querySelector('#descr_grav').value;
+    var age = document.getElementById('age').value;
+
+    // Construire les données à envoyer au serveur
+    var data = "mois=" + mois + "&descr_grav=" + descr_grav + "&age=" + age;
+
+    // Envoyer la requête AJAX
+    ajaxRequest('POST', 'php/request.php/filtre', function(response) {
+        // Mettre à jour la carte avec les nouveaux marqueurs
+	var map = new mapboxgl.Map({
+function updateMap(data) {
+  // Supprimer tous les marqueurs existants de la carte
+  var markers = document.getElementsByClassName('marker');
+  while (markers[0]) {
+    markers[0].parentNode.removeChild(markers[0]);
+  }
+var map = document.getElementById('map');
+  // Parcourir les données filtrées et ajouter les nouveaux marqueurs à la carte
+  data.forEach(function(item) {
+    var el = document.createElement('div');
+    el.className = 'marker';
+
+    var marker = new mapboxgl.Marker(el)
+      .setLngLat([item.longitude, item.latitude])
+      .addTo(map);
+  });
+}

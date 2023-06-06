@@ -1,24 +1,167 @@
 /**
-Author: Prenom NOM
-Login : etuXXX
-Groupe: ISEN X GROUPE Y
-Annee:
+Author: Gauthier LE MOAL
+Login : etu113
+Groupe: ISEN A3 GROUPE 1 Trinôme 6
+Annee: 2022-2023
 */
-
+@import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;800;900&display=swap);
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;1,200;1,300&family=Red+Hat+Display:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;1,200;1,300&family=Red+Hat+Display:wght@400;700&display=swap');
 /* Body */
+* {
+    margin : 0;
+    padding: 0;
+}
+body {
+    font-family: "Montserrat", "Raleway", "Molengo", sans-serif;
+    background: #FFDFD1;
+  }
+
+.contenant2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+}
+
+ #dessin_container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    top: 150px;
+    width: 100%;
+    flex-flow: column;
+    color: #FA6782;    
+}
+
+#dessin {
+    background-color: transparent;
+    width: 550px;
+    height: 395px;
+}
+
+ #text_container {
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+    font: "Molengo";
+    margin-top: 50px;
+
+}
+.contenant{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; 
+    flex-wrap: nowrap;
+    min-height: 100vh;
+    height: 100%;
+}
+
+#text {
+    position: relative;
+    top: 1rem;;
+}
 
 /* Header level 1 */
-
-/* Header level 2 */
+/**/ nav {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: #5E2B45;
+    font-size : bold 70px;
+    list-style-type : none;
+    box-sizing: border-box;
+    font: "Raleway";
+} 
+ #logo{width:100px;}
+.dropdownmenu ul, .dropdownmenu li {
+	margin: 0;
+	padding: 0;
+}
+.dropdownmenu ul {
+	list-style: none;
+	width: 100%;
+}
+.dropdownmenu li {
+	float: left;
+	position: relative;
+	width:auto;
+}
+.dropdownmenu a {
+	background: #5E2B45;
+	color: #FCB5AA;
+	display: block;
+	font: bold 20px'Montserrat';
+	padding: 10px 25px;
+	text-align: center;
+	text-decoration: none;
+	-webkit-transition: all .25s ease;
+	-moz-transition: all .25s ease;
+	-ms-transition: all .25s ease;
+	-o-transition: all .25s ease;
+	transition: all .25s ease;
+}
+.dropdownmenu li:hover a {
+	background: #FA6782;
+    color: #5E2B45;
+}
+#submenu {
+	left: 0;
+	opacity: 0;
+	position: absolute;
+	top: 35px;
+	visibility: hidden;
+	z-index: 1;
+}
+li:hover ul#submenu {
+	opacity: 1;
+	top: 40px;	/* adjust this as per top nav padding top & bottom comes */
+	visibility: visible;
+}
+#submenu li {
+	float: none;
+	width: 100%;
+}
+#submenu a:hover {
+	background:   #FFDFD1;
+    color: #5E2B45;
+}
+#submenu a {
+	background-color:#FA6782;
+    
+}
+#ia{
+    width:300px;
+}/* */
 
 /* section */
-
+ figcaption {
+    background-color: #5E2B45;
+    font: italic smaller sans-serif;
+    padding: 3px;
+    text-align: center;
+} 
 /* Table */
 
 /* Forms */
 
-/* Header and footer */
+/* Footer
+*/
+footer {
+    display :flex;
 
+    width: 100%;
+    height: 50px;
+    color: #FA6782;
+    background: #5E2B45;
+    justify-content: center;
+    align-items: center;
+    font-style: italic;
+}
 /* Authentication */
 
 /* Chat */
