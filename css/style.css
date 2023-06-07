@@ -17,6 +17,27 @@ body {
     background: #FFDFD1;
   }
 
+h1{
+    color:#5E2B45;
+    margin: 1rem;
+}
+
+.retour{
+    text-decoration: none;
+    display: block;
+    background: #5E2B45;
+    padding:10px ;
+    border-radius: 50px;
+    margin: 1rem;
+    color:#FFDFD1;
+    font-weight: 600;
+}
+.retour:hover{
+    background:#FCB5AA;
+    color:#5E2B45;
+    border: solid 2px #5E2B45;
+}
+
 .contenant2 {
     display: flex;
     flex-direction: column;
@@ -61,7 +82,10 @@ body {
 
 #text {
     position: relative;
-    top: 1rem;;
+    top: 1rem;
+    text-align: left;
+    padding: 0 3rem;
+    color: #5E2B45;
 }
 
 /* Header level 1 */
@@ -162,7 +186,50 @@ footer {
     align-items: center;
     font-style: italic;
 }
-/* Authentication */
+#resultat{
+font-family: 'Raleway';
+font-size: 20px;
+font-weight: 800;
+color: #FFFAF1;
+padding: 1rem;
+background: #FA6782;
+border-radius: 10px;
+margin: 1rem;
+box-shadow: 5px 5px 5px #5E2B45;
+transition: all 0.5 ease-in-out;
+}
 
-/* Chat */
+#resultat span {
+    font-weight: 600;
+    font-family: 'Molengo';
+}
 
+select {
+    border:none;
+    padding:5px;
+    border-radius: 10px;
+        background: #FFDFD1;
+    box-shadow: #5E2B45 5px 5px 5px ;
+}
+
+button{
+    margin-top: 20px;
+    width: 100%;
+    border: none;
+    border-radius: 25px;
+    height: 50px;
+    background:#5E2B45;
+    color:#FCB5AA;
+    font-weight: 600;
+    transition: all 0.5s ease-out;
+}
+button:hover{
+    
+    background:#FCB5AA;
+    color:#5E2B45;
+    border: solid 5px #5E2B45;
+}
+#filtreForm label + select{
+    margin: 1rem;
+
+}

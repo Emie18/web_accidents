@@ -20,8 +20,6 @@
 
     if ($requestMethod == 'POST' && $requestRessource == 'form') {
         $date_heure = $_POST['date_heure'];
-        $latitude = $_POST['latitude'];
-        $longitude = $_POST['longitude'];
         $age = $_POST['age'];
         $descr_athmo = $_POST['descr_athmo'];
         $id_code_insee = $_POST['id_code_insee'];
@@ -33,8 +31,8 @@
         $descr_type_col = $_POST['descr_type_col'];
     
         // Effectuer la requête en fonction des critères de filtrage
-        $request = "INSERT INTO accidents(date_heure, latitude, longitude, age, descr_athmo, id_code_insee, descr_lum, descr_dispo_secu, descr_etat_surf, descr_cat_veh, descr_agglo, descr_type_col) 
-        VALUES('$date_heure', '$latitude', '$longitude', '$age', '$descr_athmo', '$id_code_insee', '$descr_lum', '$descr_dispo_secu', '$descr_etat_surf', '$descr_cat_veh', '$descr_agglo', '$descr_type_col')";
+        $request = "INSERT INTO accidents(date_heure, age, descr_athmo, id_code_insee, descr_lum, descr_dispo_secu, descr_etat_surf, descr_cat_veh, descr_agglo, descr_type_col) 
+        VALUES('$date_heure', '$age', '$descr_athmo', '$id_code_insee', '$descr_lum', '$descr_dispo_secu', '$descr_etat_surf', '$descr_cat_veh', '$descr_agglo', '$descr_type_col')";
         $statement = $db->prepare($request);
         $statement->execute();
         if ($statement->rowCount() > 0) {

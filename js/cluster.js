@@ -1,42 +1,35 @@
-ajaxRequest('GET', 'php/request.php/liste_new_base', afficheListe);
 
-
-function afficheListe(data) {
-
-  var tableau = document.querySelector('#affiche table');
-
-  data.forEach(elem => {
-    var ligne = document.createElement('tr');
-
-    ligne.innerHTML = `
-        <td>${elem.id_accident}</td>
-        <td>${elem.ville}</td>
-        <td>${elem.date_heure}</td>
-        <td>${elem.descr_athmo}</td>
-        <td>${elem.descr_agglo}</td>
-        <td>${elem.descr_lum}</td>
-        <td>${elem.descr_dispo_secu}</td>
-        <td>${elem.descr_etat_surf}</td>
-        <td>${elem.descr_type_col}</td>
-        <td>${elem.descr_cat_veh}</td>
-        <td><button type="button" onClick=trouver_cluster(${elem.longitude},${elem.latitude})>Trouver</button></td>
-      `;
-
-    tableau.appendChild(ligne);
-  });
+// Fonction pour récupérer les paramètres de requête de l'URL
+function getQueryVariable(variable) {
+  var query = window.location.search.substring(1);
+  var vars = query.split("&");
+  for (var i = 0; i < vars.length; i++) {
+    var pair = vars[i].split("=");
+    if (decodeURIComponent(pair[0]) === variable) {
+      return decodeURIComponent(pair[1]);
+    }
+  }
+  return null;
 }
 
-//exemple d'url :http://etu115.projets.isen-ouest.fr/cgi/test.py?longitude=41&latitude=15
-function trouver_cluster(longitude, latitude) {
+// Récupérer les variables depuis l'URL
+var id_accident = getQueryVariable("id_accident");
+var resultat = getQueryVariable("resultat");
 
-  fetch('/cgi/scriptkmean.py?longitude=' + longitude + '&latitude=' + latitude)
-    .then(response => response.text())
-    .then(result => {
-      document.getElementById('resultat').innerText = result;
-    });
+var div_resultat = document.getElementById('resultat');
+div_resultat.innerHTML = "Résultat: "+`<span>` + resultat + `</span>`;
 
-}
-ajaxRequest('GET', 'php/request.php/cluster', function(data) {
+var data = "id_accident="+ id_accident;
+var save ="";
+
+// Envoyer la requête AJAX
+ajaxRequest('POST', 'php/request.php/un_accident', function (response) {
+
+  save=response;
+
+}, data);
+
+ajaxRequest('GET', 'php/request.php/cluster', function (data) {
   // Créer la carte
   mapboxgl.accessToken = 'pk.eyJ1IjoiZW1pZTE4IiwiYSI6ImNsaDdxdXB2dDAxZmYzZW1tM3hhbWR3b24ifQ.zjp20nsMooS-xVfxn982pA'; // Remplacez YOUR_ACCESS_TOKEN par votre propre jeton d'accès Mapbox
   var map = new mapboxgl.Map({
@@ -47,16 +40,71 @@ ajaxRequest('GET', 'php/request.php/cluster', function(data) {
   });
 
   // Parcourir les données et ajouter des marqueurs à la carte
-  data.forEach(function(item) {
+  data.forEach(function (item) {
     // Créer un élément HTML personnalisé pour le marqueur
     var el = document.createElement('div');
-    el.className = 'marker';
+    if (parseInt(item.ia_cluster) === parseInt(resultat)) {
+      el.className = 'marker_res'
+    } else {
+      el.className = 'marker_cluster';
+    }
 
     // Ajouter le marqueur à la carte
     var marker = new mapboxgl.Marker(el)
       .setLngLat([item.longitude, item.latitude])
       .addTo(map);
-    el.innerHTML =`<p classe="cluster">${item.ia}</p>`
+    el.innerHTML = `<p class="cluster">${item.ia_cluster}</p>`
+  });
+
+        // Créer un élément HTML personnalisé pour le marqueur
+        var el = document.createElement('div');
+        el.className = 'marker'
+        // Ajouter le marqueur à la carte
+        console.log(save[0]);
+        var marker2 = new mapboxgl.Marker(el)
+          .setLngLat([save[0].longitude, save[0].latitude])
+          .addTo(map);
+        marker2.getElement().addEventListener('mouseover', function () {
+          const info = document.getElementById('info');
+      
+          info.innerHTML = `<strong>Ville:</strong> ${save[0].ville}
+            <br><strong>Date:</strong> ${save[0].date_heure}
+            <br><strong>Âge Conducteur:</strong> ${save[0].age}
+            <br><strong>latitude </strong> ${save[0].latitude} <strong> longitude :</strong> ${save[0].longitude}
+            <br><strong>conditions atmosphériques:</strong> ${save[0].descr_athmo}
+            <br><strong>luminosité:</strong> ${save[0].descr_lum}
+            <br><strong>Etat de la surface:</strong> ${save[0].descr_etat_surf}
+            <br><strong>disposition sécurité:</strong> ${save[0].descr_dispo_secu}`;
+        });
 
   });
+
+
+// Fonction pour mettre à jour la carte avec les marqueurs filtrés
+function updateMap(data) {
+  data.forEach(function (item) {
+  // Créer un élément HTML personnalisé pour le marqueur
+  var el = document.createElement('div');
+  el.className = 'marker';
+
+  // Ajouter le marqueur à la carte
+  var marker = new mapboxgl.Marker(el)
+    .setLngLat([item.longitude, item.latitude])
+    .addTo(map);
+
+  // Ajouter un événement de survol pour afficher les informations
+  marker.getElement().addEventListener('mouseover', function () {
+    const info = document.getElementById('info');
+
+    info.innerHTML = `<strong>Ville:</strong> ${item.ville}
+     <br><strong>Date:</strong> ${item.date_heure}
+     <br><strong>Âge Conducteur:</strong> ${item.age}
+     <br><strong>latitude </strong> ${item.latitude} <strong> longitude :</strong> ${item.longitude}
+     <br><strong>conditions atmosphériques:</strong> ${item.descr_athmo}
+     <br><strong>luminosité:</strong> ${item.descr_lum}
+     <br><strong>Etat de la surface:</strong> ${item.descr_etat_surf}
+     <br><strong>disposition sécurité:</strong> ${item.descr_dispo_secu}`;
+  });
 });
+}
+

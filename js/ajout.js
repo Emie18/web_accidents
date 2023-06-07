@@ -31,8 +31,6 @@ addForm.addEventListener('submit', function(event) {
 
     //Récupération  des valeurs du formulaire
     var date_heure = document.getElementById("date_heure").value;
-    var latitude = document.getElementById("latitude").value;
-    var longitude = document.getElementById("longitude").value;
     var age = document.getElementById("age").value;
     var descr_athmo = document.getElementById("descr_athmos").value;
     var id_code_insee = document.getElementById('ville').value;
@@ -54,14 +52,14 @@ addForm.addEventListener('submit', function(event) {
     descr_type_col = escapeQuotes(descr_type_col);
 
     // // Construire les données à envoyer au serveur
-     var data = "date_heure=" + date_heure + "&latitude=" + latitude + "&longitude=" + longitude + "&age=" + 
+     var data = "date_heure=" + date_heure + "&age=" + 
     age + "&descr_athmo=" + descr_athmo + "&id_code_insee=" + id_code_insee + "&descr_lum=" + descr_lum + 
     "&descr_dispo_secu=" + descr_dispo_secu + "&descr_etat_surf=" + descr_etat_surf + "&descr_cat_veh=" + descr_cat_veh +
     "&descr_agglo=" + descr_agglo + "&descr_type_col=" + descr_type_col;
     // Envoyer la requête AJAX
     ajaxRequest('POST', 'php/ajout.php/form', function(response) {
         if(response == "l'accident à été ajouté"){
-            addForm.innerHTML =`<p>${response}</p>`;
+            addForm.innerHTML =`<p>${response}</p> <br> <a class="retour" href="tableau.html">retourner au tableau</a>`;
 
         }else{
             addForm.innerHTML =`<p>${response}</p>`;

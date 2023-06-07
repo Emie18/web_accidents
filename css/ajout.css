@@ -28,9 +28,18 @@ h1{
     
     background:#FCB5AA;
     color:#5E2B45;
-    border: solid 5px #5E2B45;;
+    border: solid 5px #5E2B45;
+    box-shadow: #5E2B45 5px 5px 5px ;
 
 }
 #dernier_p{
     padding: 0;
+}
+
+#date_heure , #age {
+    border:none;
+    padding:5px;
+    border-radius: 10px;
+    background: #FFDFD1;
+    box-shadow: #5E2B45 5px 5px 5px ;
 }

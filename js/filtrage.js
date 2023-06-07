@@ -1,13 +1,28 @@
-// Sélectionner l'option correspondante en fonction de la valeur du cookie
+
 var selectElement = document.getElementById('choix');
 var graviteSelect = document.getElementById('descr_grav');
 var limitSelect = document.getElementById('limit');
+var moisSelect = document.getElementById('mois');
+var ageSelect = document.getElementById('age');
+var graviteSelect = document.getElementById('descr_grav');
 
 var cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)choix\s*\=\s*([^;]*).*$)|^.*$/, "$1");
 var limitValue = document.cookie.replace(/(?:(?:^|.*;\s*)limit\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+var moisValue = document.cookie.replace(/(?:(?:^|.*;\s*)mois\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+var ageValue = document.cookie.replace(/(?:(?:^|.*;\s*)age\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+var graviteValue = document.cookie.replace(/(?:(?:^|.*;\s*)gravite\s*\=\s*([^;]*).*$)|^.*$/, "$1");
 
 if (limitValue && limitSelect) {
   limitSelect.value = limitValue;
+}
+if(moisValue && moisSelect){
+  moisSelect.value = moisValue
+}
+if(ageValue && ageSelect){
+  ageSelect.value = ageValue
+}
+if(graviteValue && graviteSelect){
+  graviteSelect.value = graviteValue
 }
 
 // Vérifier la valeur du cookie et mettre à jour l'état grisé/dégrisé du select "gravite"
@@ -33,6 +48,22 @@ if (cookieValue === "1") {
 } else {
   selectElement.value = "0";
 }
+
+window.addEventListener('load', function () {
+  if(cookieValue =="1"){
+  ajaxRequest('GET', 'php/request.php/prediction', updateMap)
+  }else{
+  ajaxRequest('GET', 'php/request.php/liste', updateMap)
+  }
+});
+// window.addEventListener('load', function () {
+//   if(cookieValue =="1"){
+//   ajaxRequest('GET', 'php/request.php/prediction', updateMap)
+//   }else{
+//   ajaxRequest('GET', 'php/request.php/liste', updateMap)
+//   }
+// });
+
 // Récupérer le formulaire et ajouter un gestionnaire d'événement pour la soumission
 var filterForm = document.getElementById('filtreForm');
 filterForm.addEventListener('submit', function (event) {
@@ -53,6 +84,9 @@ filterForm.addEventListener('submit', function (event) {
   // Enregistrer les valeurs dans les cookies "choix" et "limit"
   document.cookie = "choix=" + choix + "; expires=" + expiration.toUTCString();
   document.cookie = "limit=" + limit + "; expires=" + expiration.toUTCString();
+  document.cookie = "mois=" + mois + "; expires=" + expiration.toUTCString();
+  document.cookie = "age=" + age + "; expires=" + expiration.toUTCString();
+  document.cookie = "gravite=" + descr_grav + "; expires=" + expiration.toUTCString();
 
   // Construire les données à envoyer au serveur
   var data = "mois=" + mois + "&descr_grav=" + descr_grav + "&age=" + age + "&choix=" + choix+ "&limit=" + limit;

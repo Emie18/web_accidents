@@ -13,14 +13,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accidents 2009</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/carte.css">
+    <link rel="stylesheet" href="css/tableau.css">
     <script src="js/ajax.js" defer></script>
-    <script src="js/filtrage.js" defer></script>
-    <script src="js/utils.js" defer></script>
-
+    <script src="js/filtrage_tableau.js" defer></script>
   </head>
   <body>
     <div class="contenant">
@@ -40,7 +36,7 @@
       </nav>
       <!-- Home -->
       <div class="filtre">
-        <h1>Filtre</h1>
+        <h1>Filtre :</h1>
         <form id="filtreForm" method="post" action="php/request.php/filtre">
           <label for="mois">Mois :</label>
           <select id="mois" name="mois">
@@ -98,9 +94,20 @@
      
 </div>
 <div class="contenant2">
-    <h1>Carte des Accidents France en 2009</h1>
-    <div id="map"></div>
-    <div id="info">Passer la souris sur un des points pour voir les détails</div>
+    <h1>Liste des accidents</h1>
+    <div id="affiche">
+        <table class="tableau">
+            <th>Ville</th>
+            <th>Date</th>
+            <th>météo</th>
+            <th>aglomération</th>
+            <th>luminosité</th>
+            <th>dispositif de sécurité</th>
+            <th>etat de la toute</th>
+            <th>type de collision</th>
+            <th>catégorie du véhicule</th>
+        </table>
+    </div>
 </div>
     
       <!-- Footer -->
